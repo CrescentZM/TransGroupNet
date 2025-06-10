@@ -35,8 +35,20 @@ def get_cfg_defaults():
 def get_cfgs():
     cfgs = get_cfg_defaults()
     parser = argparse.ArgumentParser(description='AMR HyperParameters')
-    parser.add_argument('--config', type=str, default='configs/resnet_cfo.yaml',
+    parser.add_argument('--config',
+                        type=str,
+                        default='configs/cm_resnet_cfo.yaml',
                         help='type of config file. e.g. resnet_cfo (configs/resnet_cfo.yaml)')
+
+    # 运行该文件时使用下面添加参数的代码，注释掉上面的添加参数代码
+    # parser.add_argument('--config',
+    #                     type=str,
+    #                     default='D:\StudyFiles\PycharmFiles\OnlineResources\GithubRepository\TransGroupNet\configs\transgroupnet_cfo.yaml',
+    #                     help='type of config file. e.g. resnet_cfo (configs/resnet_cfo.yaml)')
     args = parser.parse_args()
     cfgs.merge_from_file(args.config)
     return cfgs
+
+if __name__ == "__main__":
+  cfg = get_cfgs()
+  print(cfg)
